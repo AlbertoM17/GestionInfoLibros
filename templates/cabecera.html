@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #539494;
+            font-family: "Verdana", "Helvetica", sans-serif;
+            font-size: 10pt
+        }
+
+        text {
+            color: saddlebrown;
+        }
+
+        table {
+            background-color: #7FE27F;
+            text-decoration-color: saddlebrown;
+            -moz-text-size-adjust: auto;
+            width: 100%;
+            height: 100%;
+        }
+
+        th {
+            background-color: #A14813;
+            color:white;
+            font-size:18px;
+
+        }
+
+        tr {
+            background-color: #ED874C;
+            color:white;
+            font-size:18px;
+        }
+
+        td{
+            background-color: #ED874C;
+            color:white;
+            font-size:16px;
+        }
+
+        h1 {
+            color: saddlebrown;
+        }
+
+        h2 {
+            color: saddlebrown;
+        }
+
+        .header {
+            overflow: auto;
+            width: 100%;
+            background-color: #7FE27F;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>InfoLibros</title>
+</head>
+<body>
+<header class="header">
+    <h1>InfoLibros</h1>
+</header>
+
+<div id="contenido">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

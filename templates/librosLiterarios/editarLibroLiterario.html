@@ -1,0 +1,14 @@
+{% extends "cabecera.html" %}
+{% block content %}
+    <h2>Editar</h2>
+    <form id="editar" action="/editarLibroLiterario" method="POST">
+        <label for="edTitulo"> Titulo </label>
+        <input type="text" value="{{libroLiterario.titulo}}" id="edTitulo" name="edTitulo" size="40" style="border:none;background-color:lightgray" required/>
+        <label for="edAutor"> Autor </label>
+        <input type="text" value="{{libroLiterario.autor}}" id="edAutor" name="edAutor" size="40" style="border:none;background-color:lightgray" required/>
+        <label for="edGenero"> Genero </label>
+        <input type="text" value="{{libroLiterario.genero}}" id="edGenero" name="edGenero" size="20" style="border:none;background-color:lightgray" required/>
+        <input type="text" id="edIdLibroLiterario" name="edIdLibroLiterario" value="{{libroLiterario.key.urlsafe()}}" hidden/>
+        <input type="submit" value="Guardar"/>
+    </form>
+{% endblock %}

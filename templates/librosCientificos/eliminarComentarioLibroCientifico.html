@@ -1,0 +1,15 @@
+{% extends "cabecera.html" %}
+{% block content %}
+    <div id="eliminar">
+    <form id="eliminarComentario" action="/eliminarComentarioLibroCientifico" method="POST">
+            <p style="color: black; font-size: 30px"> ¿Desea eliminar el siguiente comentario? </p>
+            <p>"{{comentario.texto}}"</p>
+        <input type="text" id="edIdLibroCientifico" name="edIdLibroCientifico" value="{{id_libroCientifico}}" hidden/>
+        <input type="text" id="edIdComentario" name="edIdComentario" value="{{comentario.key.urlsafe()}}" hidden/>
+            <input type="submit" value="SI"/>
+            <a href="/verLibroCientifico?id_libroCientifico={{id_libroCientifico}}">
+                <input type="button" value="NO"/>
+            </a>
+        </form>
+</div>
+{% endblock %}

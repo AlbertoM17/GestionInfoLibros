@@ -1,0 +1,52 @@
+application: alsproyectosabucedogonzalezalbertomateo
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /paginaPrincipal
+  script: handlers.paginaPrincipal.app
+
+- url: /listarLibrosLiterarios
+  script: handlers.librosLiterarios.listarLibrosLiterarios.app
+
+- url: /listarLibrosCientificos
+  script: handlers.librosCientificos.listarLibrosCientificos.app
+
+- url: /verLibroLiterario
+  script: handlers.librosLiterarios.verLibroLiterario.app
+
+- url: /verLibroCientifico
+  script: handlers.librosCientificos.verLibroCientifico.app
+
+- url: /eliminarComentarioLibroLiterario
+  script: handlers.librosLiterarios.eliminarComentarioLibroLiterario.app
+
+- url: /eliminarComentarioLibroCientifico
+  script: handlers.librosCientificos.eliminarComentarioLibroCientifico.app
+
+- url: /editarLibroLiterario
+  script: handlers.librosLiterarios.editarLibroLiterario.app
+
+- url: /editarLibroCientifico
+  script: handlers.librosCientificos.editarLibroCientifico.app
+
+- url: /eliminarLibroLiterario
+  script: handlers.librosLiterarios.eliminarLibroLiterario.app
+
+- url: /eliminarLibroCientifico
+  script: handlers.librosCientificos.eliminarLibroCientifico.app
+
+- url: .*
+  script: handlers.main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+- name: jinja2
+  version: "latest"

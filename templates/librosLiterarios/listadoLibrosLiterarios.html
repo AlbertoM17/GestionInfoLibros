@@ -1,0 +1,26 @@
+{% extends "cabecera.html" %}
+{% block content %}
+    {% if users.is_current_user_admin() %}
+    <form id="frmAnadir" action="/listarLibrosLiterarios" method="POST">
+        <label for="edTitulo"> Titulo </label>
+        <input type="text" id="edTitulo" name="edTitulo" size="40" style="border:none;background-color:lightgray" required/>
+        <label for="edAutor"> Autor </label>
+        <input type="text" id="edAutor" name="edAutor" size="40" style="border:none;background-color:lightgray" required/>
+        <label for="edGenero"> Genero </label>
+        <input type="text" id="edGenero" name="edGenero" size="20" style="border:none;background-color:lightgray" required/>
+        <input type="submit" value="Guardar"/>
+    </form>
+    {% endif %}
+    <ul>Lista de libros literarios
+    {% for libroLiterario in lista_librosLiterarios %}
+        <li>
+            <p>Titulo: {{ libroLiterario.titulo }}</p>
+            <a href="/verLibroLiterario?id_libroLiterario={{libroLiterario.key.urlsafe()}}">
+                    <input type="submit" value="Ver mas"/>
+            </a>
+        </li>
+    {% else %}
+        <li>No hay libros literarios almacenados</li>
+    {% endfor %}
+</ul>
+{% endblock %}

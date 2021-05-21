@@ -1,0 +1,59 @@
+{% extends "cabecera.html" %}
+{% block content %}
+    <div id="DetallesLibroLiterario">
+        <p>
+            {% if libroLiterario.titulo != ERROR %}
+        <h2>{{libroLiterario.titulo}}</h2>
+        <table>
+            <th>Autor</th>
+            <th>Género</th>
+            <tr>
+                <td>
+                    {{libroLiterario.autor}}
+                </td>
+                <td>
+                    {{libroLiterario.genero}}
+                </td>
+            </tr>
+        </table>
+        </br>
+        {% if users.is_current_user_admin() %}
+        <a href="editarLibroLiterario?id_libroLiterario={{libroLiterario.key.urlsafe()}}">
+            <button type="submit">Editar</button>
+        </a>
+        <a href="eliminarLibroLiterario?id_libroLiterario={{libroLiterario.key.urlsafe()}}">
+            <button type="submit">Eliminar</button>
+        </a>
+        {% endif %}
+        </br>
+        </br>
+        <div id="comentarios">
+            <h3 style="color: black">Comentarios </h3>
+            {% if not users.is_current_user_admin() %}
+            <form id="nuevoComentario" action="/verLibroLiterario" method="POST">
+                <label for="edComentario" style="color: black; font-size: 20px"> Añadir Comentario </label>
+                <input type="text" id="edComentario" name="edComentario" size="120"
+                       style="border:none;background-color: #A14813;color: white;font-size: 22px" required/>
+                <input type="text" id="edIdLibroLiterario" name="edIdLibroLiterario" value="{{libroLiterario.key.urlsafe()}}" hidden/>
+                <input type="submit" value="Aceptar"/>
+            </form>
+            {% endif %}
+            {% if lista_comentarios.count() > 0 %}
+                {% for comentario in lista_comentarios %}
+                <div style="border :1px solid black">
+                    <p>{{comentario.user_name}} dijo:</p>
+                    <p>{{comentario.texto}}</p>
+                    {% if comentario.user_name == user_name and not users.is_current_user_admin()%}
+                        <a href="eliminarComentarioLibroLiterario?id_comentario={{comentario.key.urlsafe()}}">
+                            <button type="submit" style="width:100%;">Eliminar</button>
+                        </a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>Aún no hay comentarios</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

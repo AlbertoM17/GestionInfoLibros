@@ -1,0 +1,26 @@
+{% extends "cabecera.html" %}
+{% block content %}
+    {% if users.is_current_user_admin() %}
+    <form id="frmAnadir" action="/listarLibrosCientificos" method="POST">
+        <label for="edTitulo"> Titulo </label>
+        <input type="text" id="edTitulo" name="edTitulo" size="40" style="border:none;background-color:lightgray" required/>
+        <label for="edAutor"> Autor </label>
+        <input type="text" id="edAutor" name="edAutor" size="40" style="border:none;background-color:lightgray" required/>
+        <label for="edCampo"> Campo </label>
+        <input type="text" id="edCampo" name="edCampo" size="20" style="border:none;background-color:lightgray" required/>
+        <input type="submit" value="Guardar"/>
+    </form>
+    {% endif %}
+    <ul>Lista de libros Cientificos
+    {% for libroCientifico in lista_librosCientificos %}
+        <li>
+            <p>Titulo: {{ libroCientifico.titulo }}</p>
+            <a href="/verLibroCientifico?id_libroCientifico={{libroCientifico.key.urlsafe()}}">
+                    <input type="submit" value="Ver mas"/>
+            </a>
+        </li>
+    {% else %}
+        <li>No hay libros cientificos almacenados</li>
+    {% endfor %}
+</ul>
+{% endblock %}

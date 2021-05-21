@@ -1,0 +1,14 @@
+{% extends "cabecera.html" %}
+{% block content %}
+<h2>Página principal</h2>
+<p>Bienvenido {{user_name}}, ¿Qué le gustaría consultar?</p>
+<a href="/listarLibrosLiterarios">Libros literarios
+            </a>
+<a href="/listarLibrosCientificos">Libros cientificos
+            </a>
+</br>
+</br>
+</br>
+</br>
+    <b><a href="{{user_logout}}">logout</a></b>
+{% endblock %}

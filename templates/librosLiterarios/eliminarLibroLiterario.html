@@ -1,0 +1,14 @@
+{% extends "cabecera.html" %}
+{% block content %}
+    <div id="eliminar">
+    <form id="eliminarLibro" action="/eliminarLibroLiterario" method="POST">
+            <p style="color: black; font-size: 30px"> ¿Desea eliminar el siguiente libro? </p>
+            <p>"{{libroLiterario.titulo}}"</p>
+        <input type="text" id="edIdLibroLiterario" name="edIdLibroLiterario" value="{{libroLiterario.key.urlsafe()}}" hidden/>
+            <input type="submit" value="SI"/>
+            <a href="/verLibroLiterario?id_libroLiterario={{id_libroLiterario}}">
+                <input type="button" value="NO"/>
+            </a>
+        </form>
+</div>
+{% endblock %}
